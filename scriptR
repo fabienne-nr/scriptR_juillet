@@ -5,10 +5,12 @@ vec1 = rnorm(10)
 vec2 = rnorm(100)
 vec3 = rnorm(1000)
 
-# representation des histogrammes 
+# representation des histogrammes
+pdf(file="probleme juillet.pdf") 
 par(mfrow=c(2,2))
-hist1=hist(vec1,xlab = "attempt", ylab="succes", col=blues9, main="Vec1",xlim = c(-3,3))
-hist2 = hist(vec2, xlab = "attempt", ylab="succes", col="snow", main="Vec2",xlim = c(-3,3))
-hist3 = hist(vec3,xlab = "attempt", ylab="succes", col="red", main="Vec3",xlim = c(-3,3))
+hist1=hist(vec1,xlab = "attempt", ylab="succes", col=blues9, main="Vec1",xlim = c(-3,3),breaks = 5)
+hist2 = hist(vec2, xlab = "attempt", ylab="succes", col="snow", main="Vec2",xlim = c(-3,3), breaks = 5)
+hist3 = hist(vec3,xlab = "attempt", ylab="succes", col="red", main="Vec3",xlim = c(-3,3), breaks = 5)
+dev.off()
 
 
