@@ -1,0 +1,46 @@
+## exo3 
+
+pdf(file = "exo3 juillet")
+library(tidyverse)
+library(dplyr)
+Mito=read.table("Mito_Genes.txt", header = TRUE)
+MLR= read.table ("MLR_Infos.txt", header = TRUE)
+
+## séparer une colonne en 2 pour avoir dans chaque tableau une colonne identique 
+mito2 = Mito %>%
+   separate (GENE_ID,into = c("GENE_ID","StandardName"),sep="\\|")
+
+## passer les colonnes en character
+mito2$StandardName= as.character(mito2$StandardName)
+MLR$StandardName = as.character(MLR$StandardName)
+
+
+## joindre les 2 tableaux
+mito3 = left_join (mito2,MLR,by="StandardName")
+as_tibble(mito3)
+
+##faire tableaux pour chaque class
+classI = subset (mito3, (MLRClassification=="ClassI"))
+classII = subset (mito3, (MLRClassification=="ClassII"))
+classIII = subset (mito3, (MLRClassification=="ClassIII"))
+
+## extraire les temps pour chaques classes
+classI_I = classI [ ,c(3,12,17,32)]
+vec1 = data.matrix(classI_I)
+classII_I = classII [ ,c(3,12,17,32)]
+vec2 = data.matrix(classII_I)
+classIII_I = classIII [ ,c(3,12,17,32)]
+vec3 = data.matrix(classIII_I)
+
+## histogramme 
+
+
+par(mfrow=c(2,2))
+hist1=hist(vec1,xlab = "attempt", ylab="succes", col=blues9, main="Vec1")
+hist2 = hist(vec2, xlab = "attempt", ylab="succes", col="snow", main="Vec2")
+hist3 = hist(vec3,xlab = "attempt", ylab="succes", col="red", main="Vec3")
+dev.off()
+
+
+
+               
