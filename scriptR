@@ -16,10 +16,18 @@ dev.off()
 ## exercice 2 
 mitobis=read.table("Mito_Genes.txt", header = TRUE, row.names=1)
 MLRbis =read.table ("MLR_Infos_2errors.txt", header = TRUE, row.names=1)
-list3=row.names(mitobis)
-list4=row.names(MLRbis)
-vrai= list3!=list4
-list3[26]
-list3[48]
-list4[26]
-list4[48]
+listMito=row.names(mitobis)
+listMLR=row.names(MLRbis)
+vrai= listMito!=listMLR
+summary (vrai)
+
+listMito[26]
+listMLR[26]
+listMLR[48]
+listMito[48]
+
+
+## remplacement des noms 
+listMLR %>%
+  str_replace("COQ5","COK5") %>%
+  str_replace("YKL218C|SRY1","YKL218|SRY1")
