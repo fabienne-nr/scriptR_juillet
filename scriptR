@@ -13,4 +13,13 @@ hist2 = hist(vec2, xlab = "attempt", ylab="succes", col="snow", main="Vec2",xlim
 hist3 = hist(vec3,xlab = "attempt", ylab="succes", col="red", main="Vec3",xlim = c(-3,3), breaks = 5)
 dev.off()
 
-
+## exercice 2 
+mitobis=read.table("Mito_Genes.txt", header = TRUE, row.names=1)
+MLRbis =read.table ("MLR_Infos_2errors.txt", header = TRUE, row.names=1)
+list3=row.names(mitobis)
+list4=row.names(MLRbis)
+vrai= list3!=list4
+list3[26]
+list3[48]
+list4[26]
+list4[48]
